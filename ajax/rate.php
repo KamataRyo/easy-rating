@@ -28,7 +28,7 @@
 
 
     //csrf対策
-    if (!wp_verify_nonce( $nonce, 'furopota-rating-system' )) {
+    if (!wp_verify_nonce( $nonce, 'easy-rating-system' )) {
         echo 'illegal post1';
         exit;
     }
@@ -42,7 +42,7 @@
 
     //データの存在確認
     $sql = "
-        SELECT * FROM " . FUROPOTA_RATING_DB_TABLE_NAME . "
+        SELECT * FROM " . EASY_RATING_DB_TABLE_NAME . "
         WHERE user_id = %d AND
               type = %s AND
               type_id = %d AND
@@ -60,7 +60,7 @@
 
     if (!$data) {
             $wpdb -> insert(
-            FUROPOTA_RATING_DB_TABLE_NAME,
+            EASY_RATING_DB_TABLE_NAME,
             array(
                 'user_id' => $user_id,
                 'type'    => $type,
@@ -80,7 +80,7 @@
         );
     } else {
         $wpdb -> update(
-            FUROPOTA_RATING_DB_TABLE_NAME,
+            EASY_RATING_DB_TABLE_NAME,
             array(
                 'rate'     => $rate,
                 'modified' => current_time('mysql', 1)
