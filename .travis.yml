@@ -30,7 +30,6 @@ script:
 
 after_success:
   - bash bin/deploy.sh
-  - npm run generatePot
 
 env:
   matrix:

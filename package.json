@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "Rate post, comment, author, even terms!",
   "keywords": [
-      "WordPress",
-      "plugin",
-      "rating",
-      "stars",
-      "evaluation",
-      "visualize"
+    "WordPress",
+    "plugin",
+    "rating",
+    "stars",
+    "evaluation",
+    "visualize"
   ],
   "bugs": "https://github.com/KamataRyo/easy-rating/issues",
   "license": "GPL-2.0",
@@ -19,19 +19,16 @@
   },
   "scripts": {
     "build": "./node_modules/gulp/bin/gulp.js build",
-    "install": "./node_modules/bower/bin/bower install; npm run build",
-    "generatePot": "grunt i18n",
-    "test": "ls ./assets/*.js; ls ./lib; ls ./languages/*.mo"
+    "install": "npm run build",
+    "test": "ls ./assets/easy-rating.js;"
   },
   "devDependencies": {
     "bower": "^1.7.9",
-    "grunt": "^0.4.5",
-    "grunt-wp-i18n": "^0.5.0",
-    "grunt-wp-readme-to-markdown": "~0.9.0",
     "gulp": "^3.9.1",
     "gulp-coffee": "^2.3.2",
     "gulp-gettext": "^0.3.0",
     "gulp-notify": "^2.2.0",
-    "gulp-plumber": "^1.1.0"
+    "gulp-plumber": "^1.1.0",
+    "gulp-sort": "^2.0.0"
   }
 }

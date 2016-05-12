@@ -3,5 +3,3 @@
 if (!defined('WP_UNINSTALL_PLUGIN')) {
     exit;
 }
-
-delete_option( Inherit_Theme_Mods::STORE_KEY );

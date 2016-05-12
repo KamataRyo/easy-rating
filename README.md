@@ -1,8 +1,8 @@
-# Inherit theme mods
+# Easy Rating
 
-[![Build Status](https://travis-ci.org/KamataRyo/inherit-theme-mods.svg?branch=master)](https://travis-ci.org/KamataRyo/inherit-theme-mods)
+[![Build Status](https://travis-ci.org/KamataRyo/easy-rating.svg?branch=master)](https://travis-ci.org/KamataRyo/easy-rating)
 
-WordPress plugin 'Inherit Theme Mods' enable to copy child theme properties from those of parent.
+Wordpress plugin which enables to rate post, comment, author, even terms.
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -11,9 +11,3 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 - you can see 'Inherit Theme Mods' in 'settigns' menu
 ![menu position](assets/screenshot-1.png)
-
-- inherit or overwrite parental property to that of child.
-![menu position](assets/screenshot-2.png)
-
-- You can use 'Inherit Theme Mods' as simple inspector for theme properties.
-![menu position](assets/screenshot-3.png)
