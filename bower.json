@@ -1,0 +1,26 @@
+{
+  "name": "easy-rating",
+  "description": "Rate post, comment, author, even terms!",
+  "moduleType": "globals",
+  "license": "GPL-2.0",
+  "ignore": [
+    "node_modules",
+    "lib",
+    "tests",
+    "phpunit.xml.dist",
+    "assets/*.coffee"
+  ],
+  "keywords": [
+      "WordPress",
+      "plugin",
+      "rating",
+      "stars",
+      "evaluation",
+      "visualize"
+  ],
+  "authors": ["KamataRyo"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KamataRyo/easy-rating"
+  }
+}

@@ -1,0 +1,47 @@
+sudo: false
+
+language: php
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+
+
+branches:
+  only:
+    - master
+    - /^v?[0-9](\.[0-9])*/
+
+
+php:
+  - 5.3
+  - 5.6
+
+
+before_script:
+  - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+  - npm cache clean
+  - npm install
+
+script:
+  - npm test
+  - phpunit
+
+after_success:
+  - bash bin/deploy.sh
+  - npm run generatePot
+
+env:
+  matrix:
+    - WP_VERSION=latest WP_MULTISITE=0
+    - WP_VERSION=3.9 WP_MULTISITE=0
+
+  global:
+    - GH_REF: github.com/KamataRyo/easy-rating.git
+    - secure: "LwZ3tBng8tI8sBu/8MJ7wX74zFtb3aXEQso2fW+eb/RxHzqnTGaXaNGK/UXaW/Ktc6AD6y0FJzSi1vECWHd05WrEzA2HImIWXJksg7lOS2P91/33UlWbCdxQEH640tCfgKKNu5VshRMoBZqwz0uUrp1T3qbnbA1QkBtrFLnnV+7k1vDZrYTKvoeXF0rlFyqJrtSSlU7Exp6D+2QRTu2RFwwTZ0GI78qRvlf36zkSDZ2nOpNRQpeYTAbXu430hn+hy6uaHYwaNJSLrbfsMhwa1sK5MXDl4AAoyjUEWM7Fb9bps2uzm7vRDWTe0upQpWZ8EJ87Nfff/9hQ4py7N5bxy/hBU6MJJnrvDLQFv068LfPdfj9sIVbPH70eefTtQlhoMncP5zrMsUisgzvUl6g3Bmlr+lB0t2HIiU2+3GKJHQL5M5ZsnVyu/dwbpNxYwT/tNWFwSl0ny2+dZFcvWyt6XuEJR76nvo/PMal1k9z6dL52k6lmKNO9tTi+Gb7/YQnz2DekF17ciSCBZisTi4P4jfZElewL9ywOomlJAFo63p1enOaqGp+C1HtZoJAvDc25usZ3nCp+7pHEm1s6d5Ngp+1i5fYAIEl0i+/Sp158I1h57MAALqGXFahhBq98sNpVin3F6RQa1FFvviPRxkC1fOAW1uFs4yjUxid5M3IuLeI="
+
+matrix:
+  include:
+    - php: 5.6
+      env: WP_VERSION=latest WP_MULTISITE=1
