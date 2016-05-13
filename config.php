@@ -3,7 +3,6 @@
 global $wpdb;
 define ('EASY_RATING_SYSTEM_COMMON_CLASS', 'easy-rating-system');
 define ('EASY_RATING_SYSTEM_CLASS_LOGOUT_DEFAULT', 'easy-rating-system-logout');
-define ('EASY_RATING_DB_TABLE_NAME', $wpdb->prefix . 'easy_rating' );
 define ('EASY_RATING_CHARSET_COLLATE', $wpdb -> get_charset_collate() );
 define ('EASY_RATING_TYPE_META_KEY_PREFIX','easy_rating_system_rate');
 
