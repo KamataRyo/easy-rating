@@ -21,7 +21,10 @@ bin
 .travis.yml
 .editorconfig
 .gitignore
-assets/*.coffee
+.sass-cache
+js/*.coffee
+css/*.scss
+config.rb
 tests
 phpunit.xml.dist
 package.json

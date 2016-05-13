@@ -2,17 +2,43 @@ var gulp    = require('gulp');
 var coffee  = require('gulp-coffee');
 var plumber = require('gulp-plumber');
 var notify  = require('gulp-notify');
-var sort    = require('gulp-sort');
+var compass = require('gulp-compass');
 var gettext = require('gulp-gettext');
 var meta    = require('./package.json');
 
+// paths = function() [
+//     {
+//          task: 'coffee',
+//           src: './coffee/*.coffee',
+//          dest: './coffee/',
+//     },{
+//          task: 'sass',
+//           src: './css/*.scss',
+//          dest: './css/',
+//     }, {
+//         task: 'po2mo',
+//          src: './languages/*.po',
+//         dest: './languages/'
+//     }
+// ];
+
 gulp.task('coffee', function(){
-    gulp.src('./assets/*.coffee')
+    gulp.src('./js/*.coffee')
         .pipe(plumber({errorHandler: notify.onError('<%= error.message %>')}))
         .pipe(coffee({bare:false}))
-        .pipe(gulp.dest('./assets'));
+        .pipe(gulp.dest('./js/'));
 });
 
+gulp.task('sass', function(){
+    gulp.src('./css/*.scss')
+        // .pipe(plumber({errorHandler: notify.onError('<%= error.message %>')}))
+        .pipe(compass({
+            config_file: './config.rb',
+            css: 'css',
+            sass: 'css'
+        }))
+        .pipe(gulp.dest('./css/'));
+});
 
 gulp.task('po2mo', function(){
     gulp.src('./languages/*.po')
@@ -20,8 +46,8 @@ gulp.task('po2mo', function(){
         .pipe(gulp.dest('./languages/'));
 });
 
-gulp.task('build',['coffee', 'po2mo']);
+gulp.task('build',['coffee','sass', 'po2mo']);
 
 gulp.task('watch', ['build'], function(){
-    gulp.watch(['./assets/*.coffee','./languages/*.po'], ['build']);
+    gulp.watch(['./js/*.coffee', './css/*.scss' , './languages/*.po'], ['build']);
 });
