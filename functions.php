@@ -12,13 +12,14 @@
  * @package easy-rating
  */
 
-global $wpdb;
-define ('EASY_RATING_DB_TABLE_NAME', $wpdb->prefix . 'easy_rating' );
+class Easy_Rating {
 
-
-class EasyRating {
+    const TEXT_DOMAIN = 'easy_rating';
+    public $table_name;
 
     public function __construct() {
+        global $wpdb;
+        $this->table_name = $wpdb->prefix . self::TEXT_DOMAIN;
         register_activation_hook ( __FILE__, array($this, 'easy_rating_table_create' ) );
     }
     //プラグイン有効化時の処理
@@ -27,7 +28,7 @@ class EasyRating {
         require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
         global $wpdb;
 
-        $sql = "CREATE TABLE " . EASY_RATING_DB_TABLE_NAME . " (
+        $sql = "CREATE TABLE " . $this->table_name . " (
             id bigint(20) NOT NULL AUTO_INCREMENT,
             user_id bigint(20) NOT NULL,
             type enum('post', 'comment', 'user') NOT NULL,
@@ -39,5 +40,9 @@ class EasyRating {
             UNIQUE KEY id (id)
         ) " . EASY_RATING_CHARSET_COLLATE;
         dbDelta( $sql );
+    }
+
+    public function generate_ip_hash( $ip ) {
+        $id = wp_get_current_user()->ID;
     }
 }

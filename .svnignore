@@ -1,0 +1,14 @@
+js/*.coffee
+tests
+.editorconfig
+.gitignore
+.svnignore
+.travis.yml
+.bowerrc
+.bower.json
+gulpfile.js
+gulpfile.coffee
+package.json
+phpunit.xml
+phpunit.xml.dist
+README.md

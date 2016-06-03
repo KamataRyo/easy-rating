@@ -3,10 +3,6 @@
 require_once (dirname(__FILE__) . '/config.php');
 
 
-
-
-
-
 function easy_rating_form ($args) {
     echo  get_rating_form($args);
 }
